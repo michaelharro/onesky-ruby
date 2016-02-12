@@ -59,7 +59,7 @@ module Resources
         Dir.foreach(folder) { |file|
           if (File.extname(file) == '.png' || File.extname(file) == '.jpg') && ()!since || File.mtime(file).utc > since.utc)
             tags_for_file = tags.select{ |tag| !tag.has_key?(:file) || tag[:file] == file }
-            screenshots.push(screenshot_from_file_tags(folder + file, tags_for_file))
+            screenshots.push(screenshot_from_file_tags(File.join(folder, file), tags_for_file))
           end
         }
 

@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'date'
+require 'json'
 
 describe 'Project::File' do
 
@@ -30,6 +32,40 @@ describe 'Project::File' do
     it 'should raise error when file does not exist' do
       expect {project.upload_file(file: 'spec/fixture/no_file.yml')}.to raise_error(IOError, 'File does not exist')
     end
+  end
+
+  describe 'upload_screenshots' do
+    screenshots_file = File.read('spec/fixture/screenshots.json')
+    screenshots = JSON.parse(screenshots_file)
+    tags_file = File.read('spec/fixture/tags.json')
+    tags = JSON.parse(tags_file)
+    let(:params) {{screenshots: screenshots }}
+
+    it 'should upload screenshots to project via array of hashes' do
+      stub_request(:post, full_path_with_auth_hash("/projects/#{project_id}/screenshots", api_key, api_secret))
+          .to_return(body: {})
+      response = project.upload_screenshots(params)
+      expect(response).to be_an_instance_of(Hash)
+    end
+
+    let(:params) {{file: 'spec/fixture/screenshots/screenshot1.png', tags: tags}}
+
+    it 'should upload screenshots to project via array of hashes' do
+      stub_request(:post, full_path_with_auth_hash("/projects/#{project_id}/screenshots", api_key, api_secret))
+          .to_return(body: {})
+      response = project.upload_screenshots(params)
+      expect(response).to be_an_instance_of(Hash)
+    end
+
+    let(:params) {{folder: 'spec/fixture/screenshots/', tags: tags, since: Date.parse('2011-10-05T22:26:12-04:00')}}
+
+    it 'should upload screenshots to project via array of hashes' do
+      stub_request(:post, full_path_with_auth_hash("/projects/#{project_id}/screenshots", api_key, api_secret))
+          .to_return(body: {})
+      response = project.upload_screenshots(params)
+      expect(response).to be_an_instance_of(Hash)
+    end
+
   end
 
   describe 'delete_file' do

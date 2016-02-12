@@ -1,0 +1,36 @@
+[{
+  "file": "screenshot1.png",
+  "key": "common.nav.product.smartphone",
+  "x": 460,
+  "y": 30,
+  "width": 150,
+  "height": 50,
+  "file": "string.po"
+},
+{
+  "file": "screenshot1.png",
+  "key": "common.nav.product.television",
+  "x": 460,
+  "y": 80,
+  "width": 150,
+  "height": 50,
+  "file": "string.po"
+},
+{
+  "file": "screenshot2.png",
+  "key": "common.footer.aboutus",
+  "x": 520,
+  "y": 60,
+  "width": 150,
+  "height": 50,
+  "file": "string.po"
+},
+{
+  "file": "screenshot2.png",
+  "key": "common.footer.contactus",
+  "x": 520,
+  "y": 110,
+  "width": 150,
+  "height": 50,
+  "file": "string.po"
+}]
